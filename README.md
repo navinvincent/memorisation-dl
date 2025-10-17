@@ -210,13 +210,18 @@ The figure depicts the effectiveness of many regularization frameworks at contra
 
 ![Comparison of several explict regularization techniques](figs/expl_regularization.png "Explicit regularization vs label noise")
 
+Data augmentation with weight decay seems most effective at hindering memorisation. The technique that gives best validation accuracy on clean labels is data augmentation with weight decay. In the classical machine learning paradigm, it was believed that an overparametrised model without explicit regularisation cannot generalise to unseen data and will only memeorise the training set. We see this to a certain extent in the the experiments we performed before. However I believe this is because the point of double descent has not been reached yet in terms of training time. We now know that with "enough" number of epochs or depth in the network, we are able to get non trivial learning without explicit regularisation No regularization (blue line) still reaches a respectable validation accuracy of 0.807 with clean labels, suggesting that even without explicit regularization, deep networks are capable of learning patterns from the data. However, this comes with a tradeoff—networks without regularization tend to memorize noisy data more, as seen by the blue line's train accuracy being uneffcted with increasing label noise.
+
 **Implicit Regularization** (architecture, optimizer, initialization):
-- Even without explicit regularization, networks often learn generalizable patterns
+- Even without explicit regularization, networks often learn generalizable patterns. The un-regularised model also seem to achieve non trivial performance. However, techniques like data augmentation and weight decay provide noticeable improvements in stability and slightly higher final test accuracy, making them beneficial for better generalization and achieving top performance.
+
 - SGD dynamics, architecture inductive biases play crucial roles
-- Key open question: what implicit biases lead to generalization?
+
  Here, many regularization techniques are compared on clean labels, against learning without explicit regularization. All networks have been trained until a target training cross-entropy loss value of $0.19$ was reached.
 
 ![Explicit vs implict regularization](figs/impl_regularization.png "Explicit vs implicit regularization")
+While explicit regularization provides direct control over model complexity, the implicit biases introduced by optimization algorithms, network architectures, initialization schemes, and training dynamics play a pivotal role in guiding the model towards solutions that generalize well to unseen data. Deep networks are typically highly overparameterized, meaning they have far more parameters than necessary to fit the training data. Paradoxically, this overparameterization seems to help generalization. One explanation is that it allows the network to find simpler solutions (e.g., those with lower norm), as the optimization process often leads to "flatter minima" in the loss landscape, which are correlated with better generalization. Also, Deep networks have a hierarchical structure, allowing them to learn abstract, compositional representations at multiple levels of abstraction (from low-level edges to high-level concepts). This hierarchical feature learning leads to better generalization, especially when combined with sufficient data.
+
 ## Implementation Details
 
 ### Framework
