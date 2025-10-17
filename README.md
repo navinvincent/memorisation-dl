@@ -205,11 +205,17 @@ Deep networks can fit **arbitrary** labellings of the training data:
 - Can slow down memorization but doesn't prevent it entirely
 - Not sufficient to explain generalization in practice
 
+The figure depicts the effectiveness of many regularization frameworks at contrasting memorization, by comparing the training accuracy reached under several degrees of label noise. Given a combination of regularization techniques, the best validation accuracy on clean labels is reported in the legend of the plot.
+
+![Comparison of several explict regularization techniques](figs/expl_regularization.png "Explicit regularization vs label noise")
+
 **Implicit Regularization** (architecture, optimizer, initialization):
 - Even without explicit regularization, networks often learn generalizable patterns
 - SGD dynamics, architecture inductive biases play crucial roles
 - Key open question: what implicit biases lead to generalization?
+ Here, many regularization techniques are compared on clean labels, against learning without explicit regularization. All networks have been trained until a target training cross-entropy loss value of $0.19$ was reached.
 
+![Explicit vs implict regularization](figs/impl_regularization.png "Explicit vs implicit regularization")
 ## Implementation Details
 
 ### Framework
