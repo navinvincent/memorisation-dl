@@ -196,7 +196,8 @@ Training continues until either:
 
 Deep networks can fit **arbitrary** labellings of the training data:
 - With 100% label corruption, ResNet-18 can still achieve near 100% training accuracy
-
+- Test accuracy drops very low though
+![trainstats](figs/train_stats.png)
 
 ### Explicit vs Implicit Regularization
 
