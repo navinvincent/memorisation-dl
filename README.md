@@ -19,7 +19,6 @@ This repository contains code to reproduce key experiments from [Zhang et al. (2
 3. **Explicit Regularization**: Study the effect of weight decay, data augmentation, and batch normalization
 4. **Implicit Regularization**: Explore learning dynamics without explicit regularization
 
-## Installation
 
 ### Requirements
 
@@ -28,20 +27,7 @@ This repository contains code to reproduce key experiments from [Zhang et al. (2
 - PyTorch (for data loading only)
 - Other dependencies listed in `requirements.txt`
 
-### Setup
 
-```bash
-# Clone the repository
-git clone <repository-url>
-cd memorisation-dl
-
-# Create a virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
 
 ## Project Structure
 
@@ -69,77 +55,7 @@ memorisation-dl/
 └── README.md
 ```
 
-## Usage
 
-### Quick Start
-
-Train a ResNet-18 on CIFAR-10 with 100% label corruption:
-
-```bash
-python train.py --noise_ratio 1.0 --max_epochs 100
-```
-
-### Basic Training
-
-```bash
-# Train with clean labels (no corruption)
-python train.py --noise_ratio 0.0 --max_epochs 100
-
-# Train with 50% label corruption
-python train.py --noise_ratio 0.5 --max_epochs 100
-
-# Enable data augmentation
-python train.py --noise_ratio 0.0 --enable_augmentation
-
-# Enable batch normalization
-python train.py --noise_ratio 0.0 --enable_batch_norm
-
-# Custom learning rate and weight decay
-python train.py --lr 0.01 --weight_decay 1e-4
-```
-
-### Command Line Arguments
-
-```
-Data Arguments:
-  --data_dir              Path to CIFAR-10 dataset (default: ./data)
-  --checkpoints_dir       Directory to save checkpoints (default: ./checkpoints)
-
-Training Arguments:
-  --batch_size           Batch size for training (default: 128)
-  --max_epochs           Maximum number of training epochs (default: 100)
-  --seed                 Random seed (default: 42)
-
-Model Arguments:
-  --num_filters          Number of filters in first ResNet layer (default: 16)
-  --enable_batch_norm    Enable batch normalization (flag)
-
-Optimizer Arguments:
-  --lr                   Initial learning rate (default: 0.1)
-  --lr_decay             Learning rate decay factor (default: 0.95)
-  --lr_step              Learning rate decay step (default: 1)
-  --weight_decay         Weight decay coefficient (default: 0.0)
-
-Data Augmentation and Noise:
-  --noise_ratio          Ratio of labels to corrupt, 0.0 to 1.0 (default: 1.0)
-  --enable_augmentation  Enable data augmentation (flag)
-
-Other:
-  --resume               Resume from latest checkpoint (flag)
-  --plot_results         Plot training results (default: True)
-```
-
-### Running Experiments
-
-#### Noise Ratio Sweep
-
-Run experiments with different noise ratios (0.0, 0.2, 0.4, 0.6, 0.8, 1.0):
-
-```bash
-python experiments/run_noise_experiments.py --output_dir ./experiments/noise_ratio
-```
-
-This will train 6 models with different corruption levels and save results to separate directories.
 
 ## Methodology
 
