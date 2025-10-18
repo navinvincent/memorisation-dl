@@ -136,6 +136,7 @@ Data augmentation with weight decay seems most effective at hindering memorisati
  Here, many regularization techniques are compared on clean labels, against learning without explicit regularization. All networks have been trained until a target training cross-entropy loss value of $0.19$ was reached.
 
 ![Explicit vs implict regularization](figs/impl_regularization.png "Explicit vs implicit regularization")
+
 While explicit regularization provides direct control over model complexity, the implicit biases introduced by optimization algorithms, network architectures, initialization schemes, and training dynamics play a pivotal role in guiding the model towards solutions that generalize well to unseen data. Deep networks are typically highly overparameterized, meaning they have far more parameters than necessary to fit the training data. Paradoxically, this overparameterization seems to help generalization. One explanation is that it allows the network to find simpler solutions (e.g., those with lower norm), as the optimization process often leads to "flatter minima" in the loss landscape, which are correlated with better generalization. Also, Deep networks have a hierarchical structure, allowing them to learn abstract, compositional representations at multiple levels of abstraction (from low-level edges to high-level concepts). This hierarchical feature learning leads to better generalization, especially when combined with sufficient data.
 
 ## Implementation Details
